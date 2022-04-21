@@ -17,6 +17,9 @@ console.clear();
 // int arr[n]:: an array of integers
 
 
+
+// My solution
+
 const k = 3
 const arr = [10,  100, 300, 200, 1000, 20, 30]
 
@@ -32,3 +35,18 @@ return res;
 }
 
 maxMin(k,arr)
+
+// Discussion Solution
+
+function maxMin(k, arr) {
+    let minUnfairness = Infinity
+    
+    arr.sort((a,b) => a - b)
+    
+    arr.forEach((element, index) => {
+        if(arr[index + k - 1] - element < minUnfairness){
+            minUnfairness = arr[index + k - 1] - element
+        }
+    })
+    return minUnfairness
+}
