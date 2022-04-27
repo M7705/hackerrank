@@ -11,31 +11,39 @@ console.clear();
 
 function missingNumbers(arr, brr) {
 //arr sorting, brr sorting
-//looping arr to pop element from brr
+//looping brr and match value to arr and pop matching element and remain that not matching 
+//in the array of brr, delete overlap value
+let res = [];
 arr.sort((a,b) => (a-b));
-brr.sort((a,b) => (a-b));
-brr.map(function(currentValue, index, arr){ 
-    for (e of arr) {
-        if (currentValue === e){
-            brr.slice()}}
+brr.sort((a,b) => (a-b)); 
+// find max and min value of brr = brr[0], brr[-1]
+console.log(brr);
 
-}) 
+let zeroBrray = new Array(brr[brr.length-1] - brr[0] + 1).fill(0);
+// zeroArray.fill(0, 0, brr[brr.length-1] - brr[0]);
+console.log(zeroBrray);
 
+for (let i of brr) {
+    zeroBrray[i-brr[0]]++;
+} 
+console.log(zeroBrray);
+;
+for (let i of arr) {
+    zeroBrray[i - brr[0]]--;
+}
 
-
-
+for (let i in zeroBrray) {
+    if (zeroBrray[i] > 0) {
+        res.push(brr[0] + Number(i))
+        console.log(res)
+    }
+}
+return res; 
 }
 
 
-arr = [
-    203, 204, 205, 206,
-    207, 208, 203, 204,
-    205, 206] 
+arr = [11, 4, 11, 7, 13, 4, 12, 11, 10, 14] 
 
-brr = [
-    203, 204, 204, 205,
-    206, 207, 205, 208,
-    203, 206, 205, 206,
-    204]
+brr = [11, 4, 11, 7, 3, 7, 10, 13, 4, 8, 12, 11, 10, 14, 12]
 
 console.log(missingNumbers(arr, brr));
